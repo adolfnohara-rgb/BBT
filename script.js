@@ -12,6 +12,10 @@ function sendMessage() {
   }, 500);
 }
 
+window.onload = () => {
+  addMessage("Hello 👋 I'm your AI Assistant. Ask me about HTML, CSS, or JavaScript!", "bot");
+};
+
 function addMessage(text, sender) {
   const chatBox = document.getElementById("chat-box");
   const msg = document.createElement("div");
@@ -20,6 +24,12 @@ function addMessage(text, sender) {
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
 }
+
+document.getElementById("user-input").addEventListener("keydown",function(e){
+  if(e.key === "Enter"){
+    sendMessage();
+  }
+})
 
 function getBotReply(msg) {
   msg = msg.toLowerCase();
@@ -41,3 +51,4 @@ function getBotReply(msg) {
 
   return "Sorry, I don't understand yet. I'm still learning 🙂";
 }
+
